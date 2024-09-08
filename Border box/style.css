@@ -1,0 +1,116 @@
+body{
+  background-color: #000000f6;
+  margin: 5%;
+  text-align: center;
+
+}
+
+.card, .card2{
+  margin: 0 auto;
+  padding: 2rem;
+  width: 300px;
+  background-color: #1c1f2b;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 8%;
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card::after, .card::before{
+  --angle: 0deg;
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle) ,#4A569D, #DC2424, #6200ff, #049b69, #4A569D); 
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+
+.card2::before,.card2::after{
+  --angle: 0deg;
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle) ,transparent 70%, blue);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 5s spin linear infinite;
+}
+
+.card::before, .card2::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+  
+}
+
+.card3{
+  position: relative;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  background-color: #00000093;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+h1{
+  z-index: 2;
+}
+
+.card3::before{
+ content: '';
+ position: absolute;
+ width: 170px;
+ height: 100%;
+ background: linear-gradient(#00ccff, #d500f9);
+ animation: rotate 4s linear infinite;
+}
+
+.card3::after{
+  content: '';
+  position: absolute;
+  background-color: #0e1538;
+  inset: 5px;
+  border-radius: 10px;
+}
+
+@keyframes rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+  
+}
